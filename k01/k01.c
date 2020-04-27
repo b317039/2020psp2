@@ -3,19 +3,27 @@
 #include <string.h>
 #include <math.h>
 
-//extern double ave_online(double val,double ave,int N)
-//extern double var_online()
 
-double ave_online(double val,double ave,int N){
+
+extern double ave_online(double val,double ave,double N){
     ave = ((N-1)/N)*ave + (1/N)*val; 
     return ave;    
     }
+extern double var_online(double ave,double ave2){
+    double dis = 0;
+    dis = ave2 - pow(ave,2);
+    return dis;
+}
 
 int main(void)
 {
-    int N = 0;
+    double N = 1;
     double val = 0;
+    double val2= 0;
     double ave = 0;
+    double ave2= 0;
+    double dis = 0;
+    double dis2= 0;
     char fname[FILENAME_MAX];
     char buf[256];
     FILE* fp;
@@ -24,7 +32,6 @@ int main(void)
     fgets(fname,sizeof(fname),stdin);
     fname[strlen(fname)-1] = '\0';
     printf("the filename of sample: %s\n",fname);
-    printf("running");
 
     fp = fopen(fname,"r");
     if(fp==NULL){
@@ -34,22 +41,26 @@ int main(void)
 
     while(fgets(buf,sizeof(buf),fp) != NULL){
         sscanf(buf,"%lf",&val);
-        printf("val=%lf\n",val);
-        ave_online(val,ave,N);
+        ave = ave_online(val,ave,N);
+        val2 = pow(val,2);
+        ave2 = ave_online(val2,ave2,N);
+        dis =var_online(ave,ave2);
         N++;
-        printf("val=%lf\n",val);
-    
-
-
-
     }
+    
+    dis2=dis*(N-1)/(N-2);
 
     if(fclose(fp) == EOF){
         fputs("file close error\n",stderr);
         exit(EXIT_FAILURE);
     }
 
-    
+
+    printf("標本平均=%lf\n",ave);
+    printf("標本分散=%lf\n",dis);
+    printf("不偏分散=%lf\n",dis2);
+    printf("母集団の平均推定値=%lf\n",ave);
+
     return 0;
 
 
