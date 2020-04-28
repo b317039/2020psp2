@@ -68,6 +68,17 @@ l.53: ファイルを閉じる．閉じれないときは，即座にプログ�
 
 1.62：母集団の平均推定値を出力
 
+## 入出力結果
+
+```
+input the filename of sample:../sample/heights_male.csv
+the filename of sample: ../sample/heights_male.csv
+sample mean：
+sample variance：
+population mean (estimated)：
+population variance (estimated)：
+```
+
 ## 修正履歴
 
 説明は「かきくけこ」だ！
