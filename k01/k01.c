@@ -5,14 +5,14 @@
 
 
 
-extern double ave_online(double val,double ave,double N){
+double ave_online(double val,double ave,double N){
     ave = ((N-1)/N)*ave + (1/N)*val; 
     return ave;    
     }
-extern double var_online(double ave,double ave2){
-    double dis = 0;
-    dis = ave2 - pow(ave,2);
-    return dis;
+double var_online(double ave,double ave2){
+    double var = 0;
+    var = ave2 - pow(ave,2);
+    return var;
 }
 
 int main(void)
@@ -22,8 +22,8 @@ int main(void)
     double val2= 0;
     double ave = 0;
     double ave2= 0;
-    double dis = 0;
-    double dis2= 0;
+    double var = 0;
+    double var2= 0;
     char fname[FILENAME_MAX];
     char buf[256];
     FILE* fp;
@@ -44,11 +44,11 @@ int main(void)
         ave = ave_online(val,ave,N);
         val2 = pow(val,2);
         ave2 = ave_online(val2,ave2,N);
-        dis =var_online(ave,ave2);
+        var =var_online(ave,ave2);
         N++;
     }
     
-    dis2=dis*(N-1)/(N-2);
+    var2=var*(N-1)/(N-2);
 
     if(fclose(fp) == EOF){
         fputs("file close error\n",stderr);
@@ -57,8 +57,8 @@ int main(void)
 
 
     printf("標本平均=%lf\n",ave);
-    printf("標本分散=%lf\n",dis);
-    printf("不偏分散=%lf\n",dis2);
+    printf("標本分散=%lf\n",var);
+    printf("母集団分散=%lf\n",var2);
     printf("母集団の平均推定値=%lf\n",ave);
 
     return 0;

@@ -71,12 +71,12 @@ l.53: ファイルを閉じる．閉じれないときは，即座にプログ�
 ## 入出力結果
 
 ```
-input the filename of sample:../sample/heights_male.csv
-the filename of sample: ../sample/heights_male.csv
-sample mean：
-sample variance：
-population mean (estimated)：
-population variance (estimated)：
+input the filename of sample:the filename of sample: ../sample/heights_male.csv
+標本平均=173.888750
+標本分散=25.361711
+母集団分散=28.984812
+母集団の平均推定値=173.888750
+
 ```
 
 ## 修正履歴
