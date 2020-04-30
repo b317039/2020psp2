@@ -47,10 +47,10 @@ l.43: ファイルを閉じる．閉じれないときは，即座にプログ�
 1.51：B県のデータをもとにした読み込んだデータの尤度を出力
 
 ## 入出力結果
-
 ```
-Likelihood for A：
-Likelihood for B：
+input the filename of sample:the filename of sample: ../sample/heights_male.csv
+Likehood_A: 0.000546
+Likehood_B: 0.000532
 ```
 
 ## 修正履歴

@@ -47,8 +47,8 @@ int main(void)
 
     
 
-    printf("L_A: %lf\n",L_A);
-    printf("L_B: %lf\n",L_B);
+    printf("Likehood_A: %lf\n",L_A);
+    printf("Likehood_B: %lf\n",L_B);
 
     return 0;
 
