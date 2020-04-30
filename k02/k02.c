@@ -3,7 +3,6 @@
 #include <string.h>
 #include <math.h>
 
-extern double p_stdnorm(double z);
 
 int main(void)
 {
@@ -11,7 +10,10 @@ int main(void)
     char fname[FILENAME_MAX];
     char buf[256];
     FILE* fp;
-    double L1=1,L2=1;
+    double he_a=170.8,var_a=pow(5.43,2);
+    double he_b=169.7,var_b=pow(5.5,2);
+    double ya,yb=0;
+    double L_A=1,L_B=1;
 
     printf("input the filename of sample:");
     fgets(fname,sizeof(fname),stdin);
@@ -27,20 +29,26 @@ int main(void)
     while(fgets(buf,sizeof(buf),fp) != NULL){
         sscanf(buf,"%lf",&val);
 
+        ya=(val-he_a)/var_a;
+        yb=(val-he_b)/var_b;
 
-    
+        L_A=L_A*p_stdnorm(ya);
+        L_B=L_B*p_stdnorm(yb);
 
 
 
     }
+
 
     if(fclose(fp) == EOF){
         fputs("file close error\n",stderr);
         exit(EXIT_FAILURE);
     }
 
-    printf("L_A: %f\n",max_val);
-    printf("L_B: %f\n",min_val);
+    
+
+    printf("L_A: %lf\n",L_A);
+    printf("L_B: %lf\n",L_B);
 
     return 0;
 
