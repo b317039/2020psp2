@@ -20,37 +20,37 @@ aa83988848 薗田光太郎
 と計算できる．<img src="/k02/tex/2ec6e630f199f589a2402fdf3e0289d5.svg?invert_in_darkmode&sanitize=true" align=middle width=8.270567249999992pt height=14.15524440000002pt/>は仮定した確率密度関数で，<img src="/k02/tex/27e556cf3caa0673ac49a8f0de3c73ca.svg?invert_in_darkmode&sanitize=true" align=middle width=8.17352744999999pt height=22.831056599999986pt/>はその母数．<img src="/k02/tex/2ec6e630f199f589a2402fdf3e0289d5.svg?invert_in_darkmode&sanitize=true" align=middle width=8.270567249999992pt height=14.15524440000002pt/>が正規分布なら，<img src="/k02/tex/27e556cf3caa0673ac49a8f0de3c73ca.svg?invert_in_darkmode&sanitize=true" align=middle width=8.17352744999999pt height=22.831056599999986pt/>は，平均<img src="/k02/tex/07617f9d8fe48b4a7b3f523d6730eef0.svg?invert_in_darkmode&sanitize=true" align=middle width=9.90492359999999pt height=14.15524440000002pt/>と分散<img src="/k02/tex/e6718aa5499c31af3ff15c3c594a7854.svg?invert_in_darkmode&sanitize=true" align=middle width=16.535428799999988pt height=26.76175259999998pt/>である．
 
 ## ソースコードの説明
-l.19: データファイル名を入力させ，fnameに格納
+l.24: データファイル名を入力させ，fnameに格納
 
-l.20: 入力させた文字列の最後にエンターキーが入っているので，fnameの文字列の最後をヌル文字'\0'に置換
+l.25: 入力させた文字列の最後にエンターキーが入っているので，fnameの文字列の最後をヌル文字'\0'に置換
 
 l.20: fnameを確認
 
-l.23: fnameで指定したファイルの先頭アドレスをファイルポインタ fp に読み込む
+l.26: fnameで指定したファイルの先頭アドレスをファイルポインタ fp に読み込む
 
-l.24: もしfpがNULLだったときは，ファイルを開けなかったので，即座にプログラム終了
+l.29: もしfpがNULLだったときは，ファイルを開けなかったので，即座にプログラム終了
 
-l.25: ファイルを1行ずつbufに読み込む．もし読み込み成功する限り以下を繰り返す
+l.30: ファイルを1行ずつbufに読み込む．もし読み込み成功する限り以下を繰り返す
 
-l.30: bufからscanfで数値文字列を実数としてvalに読み込む
+l.35: bufからscanfで数値文字列を実数としてvalに読み込む
 
-l.32: valに読み込まれたデータ、A県の平均と分散を表すhe_aとvar_aから標準化した値を求める
+l.37: valに読み込まれたデータ、A県の平均と分散を表すhe_aとvar_aから標準化した値を求める
 
-l.33: 1.32と同様にB県のデータで標準化した値を求める
+l.38: 1.32と同様にB県のデータで標準化した値を求める
 
-l.35: 1.32で求めた標準化した値に対応する出現確率をもとめそれをデータ回数分かけることで最終的に尤度を求める。
+l.40: 1.32で求めた標準化した値に対応する出現確率をもとめそれをデータ回数分かけることで最終的に尤度を求める。
 
-l.43: ファイルを閉じる．閉じれないときは，即座にプログラム終了
+l.48: ファイルを閉じる．閉じれないときは，即座にプログラム終了
 
-1.50：A県のデータをもとにした読み込んだデータの尤度を出力
+1.55：A県のデータをもとにした読み込んだデータの尤度を出力
 
-1.51：B県のデータをもとにした読み込んだデータの尤度を出力
+1.56：B県のデータをもとにした読み込んだデータの尤度を出力
 
 ## 入出力結果
 ```
 input the filename of sample:the filename of sample: ../sample/heights_male.csv
-Likehood_A: 0.000546
-Likehood_B: 0.000532
+Likehood_A: 0.000006
+Likehood_B: 0.000002
 ```
 
 ## 修正履歴
