@@ -10,8 +10,8 @@ int main(void)
     char fname[FILENAME_MAX];
     char buf[256];
     FILE* fp;
-    double he_a=170.8,var_a=pow(5.43,2);
-    double he_b=169.7,var_b=pow(5.5,2);
+    double he_a=170.8,var_a=5.43;
+    double he_b=169.7,var_b=5.5;
     double ya,yb=0;
     double L_A=1,L_B=1;
 
