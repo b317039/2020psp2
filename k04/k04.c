@@ -7,6 +7,7 @@
 typedef struct list{
     int gender;
     double heights;
+    int ID;
     }list;
 
 int main(void)
@@ -16,7 +17,7 @@ int main(void)
     char buf2[256];
     FILE* fp;
     FILE* fp2;
-    int ID,ID2;
+    int ID;
     int flag=0;
     int n=1;
     int i=0;
@@ -51,18 +52,21 @@ int main(void)
         fputs("File open error\n",stderr);
         exit(EXIT_FAILURE);
     }
+
     printf("Which data do you want?\n");
     scanf("%d",&ID);
+
     while(fgets(buf2,sizeof(buf2),fp2) != NULL){
-        sscanf(buf2,"%d",&ID2);
-        if(ID==ID2){
-        flag=1;
-        break;
+        sscanf(buf2,"%d",&Data[n].ID);
+        if(Data[n].ID==ID){
+            flag=1;
+            break;
         }
         else{
-            n++;
+        n++;
         }
     }
+   
 if(flag==0){
 printf("================================\n");
 printf("No data\n");
