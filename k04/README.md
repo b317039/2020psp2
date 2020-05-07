@@ -57,8 +57,8 @@ Input the filename of sample ID : ../sample/IDs.csv
 Which ID's data do you want? : 45313125
 ---
 ID : 45313125
-gender : Male
-height : 167.83
+gender : Female
+height : 152.4
 ```
 
 例えば，ID 45313124のデータを調べたいとき，
@@ -73,3 +73,5 @@ No data
 
 ## 修正履歴
 
+[comment "20200506]
+- 入出力結果は想定通りで問題ないですが，せっかくなので，ID，gender, heightをメンバーとする構造体配列を作って，その配列を探索して結果を表示するようにしてください．
