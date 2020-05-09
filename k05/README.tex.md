@@ -9,8 +9,21 @@ aa83988848 薗田光太郎
 等分散の2標本の平均の差の検定はt検定でおこなえる（調べてプログラムを書け）
 
 ## ソースコードの説明
+1.1~76:課題1と同様の手順で男女それぞれの標本平均、不偏分散を求める
 
+1.78:求めた数値と男女のデータ数からt検定のための数値を求める。
+
+1.81:求めた数値がt分布のパーセント点のが1％になる部分の面積より大きければ
+    「工学部20代の男性の身長は女性の身長より大きいと言える」と出力。
+    そうでなければ「工学部20代の男性の身長は女性の身長より大きいと言えない」と出力。
 ## 入出力結果
+''
+input the filename of male data
+the filename of male data : ../sample/heights_male.csv
+input the filename of female data
+the filename of female data : ../sample/heights_female.csv
+工学部20代の男性の身長は女性の身長より大きいと言える
+''
 
 ## 修正履歴
 
