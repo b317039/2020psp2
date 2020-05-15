@@ -29,6 +29,7 @@ int main(void){
     double t_test;
     double s;
     double ave_low=0,ave_high=0;
+    double powe=0;
 
 printf("input the filename of male data\n");
 fgets(fname,sizeof(fname),stdin);
@@ -42,8 +43,8 @@ if(fp==NULL){
 while(fgets(buf,sizeof(buf),fp) != NULL){
         sscanf(buf,"%lf",&heights);
         ave = ave_online(heights,ave,i);
-        tmp=ave_online(pow(heights,2),tmp,i);
-        var =var_online(ave,tmp);
+        tmp = ave_online(pow(heights,2),tmp,i);
+        var = var_online(ave,tmp);
         i++;
 }
 
@@ -73,14 +74,18 @@ if(fclose(fp) == EOF){
         fputs("file close error\n",stderr);
         exit(EXIT_FAILURE);
 }
+
 var = var*(i-1)/(i-2);
-var2 = var2*(i-1)/(i-2);
+var2 = var2*(j-1)/(j-2);
 s= ((i-2)*var+(j-2)*var2)/(i+j-4);
-t_test = (ave-ave2)/pow(s*((1/(i-1))+(1/(j-1))),0.5);
-ave_low = (ave-ave2) - 2.681*pow(s*((1/(i-1))+(1/(j-1))),0.5);
+powe= pow(s*(1/(i-1)+1/(j-1)),0.5);
+t_test = (ave-ave2)/powe;
+ave_low = (ave-ave2) - 2.681*pow(s*(1/(i-1)+1/(j-1)),0.5);
 ave_high = (ave-ave2) +  2.681*pow(s*((1/(i-1))+(1/(j-1))),0.5);
 
-if(t_test > 2.681){
+printf("t_test=%lf\n",powe);
+
+if(t_test <= 2.681){
 printf("工学部20代の男性の身長は女性の身長より大きいと言える\n");  
 printf("男性と女性の平均身長が同じとみなされるときの，標本男性の平均値と標本女性の平均値の差の範囲\n");
 printf("%lf < average_renge < %lf\n",ave_low,ave_high);
@@ -88,6 +93,9 @@ printf("今回の標本男性の平均値と標本女性の平均値の差: %lf\
 }
 else{
 printf("工学部20代の男性の身長は女性の身長より大きいと言えない\n"); 
+printf("男性と女性の平均身長が同じとみなされるときの，標本男性の平均値と標本女性の平均値の差の範囲\n");
+printf("%lf < average_renge < %lf\n",ave_low,ave_high);
+printf("今回の標本男性の平均値と標本女性の平均値の差: %lf\n",ave - ave2);
 }
 
     return 0;
